@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">ProjetoTCC1</string>
+
+
+    <string name="title_activity_principal">PrincipalActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="opcao_aba">Linhas</string>
+    <string name="opcao_spinner">Perfil</string>
+    <string name="opcao_pager">Sobre</string>
+    <string-array name="secoes">
+        <item>Seção 1</item>
+        <item>Seção 2</item>
+        <item>Seção 3</item>
+    </string-array>
+    <array name="cores_bg">
+        <item>#FFCDD2</item>
+        <item>#B2DFDB</item>
+        <item>#BBDEFB</item>
+    </array>
+    <array name="cores_texto">
+        <item>#F44336</item>
+        <item>#4CAF50</item>
+        <item>#03A9F4</item>
+    </array>
+
+
+</resources>
