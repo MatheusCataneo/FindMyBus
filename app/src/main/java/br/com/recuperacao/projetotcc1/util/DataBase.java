@@ -24,10 +24,9 @@ public class DataBase extends SQLiteOpenHelper {
         final String createTableUsuario = "CREATE TABLE USUARIO ( " +
                 "_id integer primary key autoincrement, "+
                 "nome text not null, "+
-                "cpf text not null, "+
+                "sobrenome text not null, "+
                 "data_nascimento text not null,"+
-                "numero_cartao text  not null, "+
-                "tipo_cartao text  not null, "+
+                "email text  not null, "+
                 "username text not null, "+
                 "senha text  not null, " +
                 "confirmar_senha text not null)";

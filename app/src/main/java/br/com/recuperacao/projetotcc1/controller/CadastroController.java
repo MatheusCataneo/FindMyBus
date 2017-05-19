@@ -24,10 +24,9 @@ public class CadastroController {
 
         instanciaDb = db.getWritableDatabase();
         dados.put("nome", cadastro.getNome());
-        dados.put("cpf", cadastro.getCpf());
+        dados.put("sobrenome", cadastro.getSobrenome());
         dados.put("data_nascimento", cadastro.getData_nascimento());
-        dados.put("numero_cartao", cadastro.getNumero_cartao());
-        dados.put("tipo_cartao", cadastro.getTipo_cartao());
+        dados.put("email", cadastro.getEmail());
         dados.put("username", cadastro.getNome_usuario());
         dados.put("senha", cadastro.getSenha_usuario());
         dados.put("confirmar_senha", cadastro.getRepetir_senha_usuario());
@@ -41,7 +40,7 @@ public class CadastroController {
     }
 
     public Cadastro getbyid (int id){
-        String[] campos = {"_id", "nome", "cpf", "data_nascimento", "numero_cartao", "tipo_cartao", "username", "senha", "confirmar_senha"};
+        String[] campos = {"_id", "nome", "sobrenome", "data_nascimento", "email", "username", "senha", "confirmar_senha"};
         String where = "_id = " + id;
         instanciaDb = db.getReadableDatabase();
 
@@ -57,10 +56,9 @@ public class CadastroController {
         Cadastro cadastro = new Cadastro();
         cadastro.setId(cursor.getInt(cursor.getColumnIndexOrThrow("_id")));
         cadastro.setNome(cursor.getString(cursor.getColumnIndexOrThrow("nome")));
-        cadastro.setCpf(cursor.getString(cursor.getColumnIndexOrThrow("cpf")));
+        cadastro.setSobrenome(cursor.getString(cursor.getColumnIndexOrThrow("sobrenome")));
         cadastro.setData_nascimento(cursor.getString(cursor.getColumnIndexOrThrow("data_nascimento")));
-        cadastro.setNumero_cartao(cursor.getString(cursor.getColumnIndexOrThrow("numero_cartao")));
-        cadastro.setTipo_cartao(cursor.getString(cursor.getColumnIndexOrThrow("tipo_cartao")));
+        cadastro.setEmail(cursor.getString(cursor.getColumnIndexOrThrow("email")));
         cadastro.setNome_usuario(cursor.getString(cursor.getColumnIndexOrThrow("username")));
         cadastro.setSenha_usuario(cursor.getString(cursor.getColumnIndexOrThrow("senha")));
         cadastro.setRepetir_senha_usuario(cursor.getString(cursor.getColumnIndexOrThrow("confirmar_senha")));
@@ -72,9 +70,9 @@ public class CadastroController {
         long resultado;
         instanciaDb = db.getWritableDatabase();
         dados.put("nome", cadastro.getNome());
-        dados.put("cpf", cadastro.getCpf());
-        dados.put("numero_cartao", cadastro.getNumero_cartao());
-        dados.put("tipo_cartao", cadastro.getTipo_cartao());
+        dados.put("sobrenome", cadastro.getSobrenome());
+        dados.put("data_nascimento", cadastro.getData_nascimento());
+        dados.put("email", cadastro.getEmail());
         dados.put("username", cadastro.getNome_usuario());
         dados.put("senha", cadastro.getSenha_usuario());
         dados.put("confirmar_senha", cadastro.getRepetir_senha_usuario());

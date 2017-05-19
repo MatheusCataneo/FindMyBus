@@ -4,18 +4,12 @@ package br.com.recuperacao.projetotcc1.modelo;
 public class Cadastro {
     private int id;
     private String nome;
-    private String cpf;
+    private String sobrenome;
     private String data_nascimento;
-    private String numero_cartao;
-    private String tipo_cartao;
+    private String email;
     private String nome_usuario;
     private String senha_usuario;
     private String repetir_senha_usuario;
-
-    public Cadastro(){
-
-    }
-
 
     public int getId() {
         return id;
@@ -33,12 +27,12 @@ public class Cadastro {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public String getData_nascimento() {
@@ -49,20 +43,12 @@ public class Cadastro {
         this.data_nascimento = data_nascimento;
     }
 
-    public String getNumero_cartao() {
-        return numero_cartao;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNumero_cartao(String numero_cartao) {
-        this.numero_cartao = numero_cartao;
-    }
-
-    public String getTipo_cartao() {
-        return tipo_cartao;
-    }
-
-    public void setTipo_cartao(String tipo_cartao) {
-        this.tipo_cartao = tipo_cartao;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNome_usuario() {

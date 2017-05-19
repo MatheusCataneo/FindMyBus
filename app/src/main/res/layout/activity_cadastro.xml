@@ -16,20 +16,20 @@
         android:layout_height="match_parent">
 
         <EditText
+            android:id="@+id/nome_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/nome_cad"
-            android:hint="Nome Completo" />
+            android:hint="Nome"
+            android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/sobrenome_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:ems="10"
-            android:id="@+id/cpf_cad"
-            android:hint="CPF" />
+            android:hint="Sobremone"
+            android:inputType="textPersonName" />
 
         <EditText
             android:layout_width="match_parent"
@@ -40,19 +40,12 @@
             android:inputType="date" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/num_cartao_cad"
-            android:hint="Numero de Cartão" />
-
-        <EditText
+            android:id="@+id/email_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/tipo_cartao_cad"
-            android:hint="Tipo de Cartão" />
+            android:hint="EMAIL"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:layout_width="match_parent"
@@ -63,20 +56,21 @@
             android:hint="Nome do Usuario" />
 
         <EditText
+            android:id="@+id/senha_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/senha_cad"
-            android:hint="Senha" />
+            android:hint="Senha"
+            android:inputType="textPassword" />
 
         <EditText
+            android:id="@+id/rep_senha_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/rep_senha_cad"
             android:hint="Repetir Senha"
             android:inputType="textPassword" />
+
     </LinearLayout>
 
     <LinearLayout

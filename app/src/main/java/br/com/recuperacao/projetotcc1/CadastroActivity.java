@@ -22,7 +22,7 @@ import br.com.recuperacao.projetotcc1.modelo.Cadastro;
 import static br.com.recuperacao.projetotcc1.R.drawable.teste;
 
 public class CadastroActivity extends AppCompatActivity {
-    EditText nome_cad, cpf_cad, dt_nasc_cad, num_cartao_cad, tipo_cartao_cad, user_cad, senha_cad, rep_senha_cad;
+    EditText nome_cad, sobrenome_cad, dt_nasc_cad, email_cad, user_cad, senha_cad, rep_senha_cad;
     Cadastro cadastro;
     String id_cadastro;
 
@@ -35,10 +35,9 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
         nome_cad = (EditText) findViewById(R.id.nome_cad);
-        cpf_cad = (EditText) findViewById(R.id.cpf_cad);
+        sobrenome_cad = (EditText) findViewById(R.id.sobrenome_cad);
         dt_nasc_cad = (EditText) findViewById(R.id.dt_nasc_cad);
-        num_cartao_cad = (EditText) findViewById(R.id.num_cartao_cad);
-        tipo_cartao_cad = (EditText) findViewById(R.id.tipo_cartao_cad);
+        email_cad = (EditText) findViewById(R.id.email_cad);
         user_cad = (EditText) findViewById(R.id.user_cad);
         senha_cad = (EditText) findViewById(R.id.senha_cad);
         rep_senha_cad = (EditText) findViewById(R.id.rep_senha_cad);
@@ -67,10 +66,9 @@ public class CadastroActivity extends AppCompatActivity {
             //Toast.makeText(getApplicationContext(),"erroooowww", Toast.LENGTH_LONG).show();
             Cadastro cadastro = new Cadastro();
             cadastro.setNome(nome_cad.getText().toString());
-            cadastro.setCpf(cpf_cad.getText().toString());
+            cadastro.setSobrenome(sobrenome_cad.getText().toString());
             cadastro.setData_nascimento(dt_nasc_cad.getText().toString());
-            cadastro.setNumero_cartao(num_cartao_cad.getText().toString());
-            cadastro.setTipo_cartao(tipo_cartao_cad.getText().toString());
+            cadastro.setEmail(email_cad.getText().toString());
             cadastro.setNome_usuario(user_cad.getText().toString());
             cadastro.setSenha_usuario(senha_cad.getText().toString());
             cadastro.setRepetir_senha_usuario(rep_senha_cad.getText().toString());
@@ -91,7 +89,7 @@ public class CadastroActivity extends AppCompatActivity {
             }
             if (teste > 0) {
                 Toast.makeText(getApplicationContext(), "Redirecionando...", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CadastroActivity.this, MainInicial.class);
+                Intent intent = new Intent(CadastroActivity.this, EntrarActivity.class);
                 startActivity(intent);
             }else {
                 Toast.makeText(getBaseContext(), cadastro.getNome() + " Salvo com sucesso!", Toast.LENGTH_LONG).show();

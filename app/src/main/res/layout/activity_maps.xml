@@ -8,27 +8,28 @@
     android:orientation="vertical"  >
 
     <EditText
+        android:id="@+id/etOrigin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etOrigin"
-        android:hint="Enter origin address" />
+        android:hint="Digite o endereço de saida" />
 
     <EditText
+        android:id="@+id/etDestination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter destination address"
-        android:id="@+id/etDestination" />
+        android:hint="Digite o endereço da chegada" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <Button
+            android:id="@+id/btnFindPath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find path"
-            android:id="@+id/btnFindPath" />
+            android:text="Ver Rota" />
         <ImageView
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"

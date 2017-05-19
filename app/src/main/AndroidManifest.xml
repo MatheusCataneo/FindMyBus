@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.recuperacao.projetotcc1">
+
+    <uses-sdk tools:overrideLibrary="com.facebook, android.support.customtabs, com.firebase.ui, com.firebase.ui.auth"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -62,7 +65,17 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="1921069258109618" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:label="FindMyBus"
+            android:screenOrientation="portrait"/>
+
+
     </application>
 
 </manifest>
