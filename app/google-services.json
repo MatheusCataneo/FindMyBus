@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "638577584167",
+    "firebase_url": "https://findmybus-a0e91.firebaseio.com",
+    "project_id": "findmybus-a0e91",
+    "storage_bucket": "findmybus-a0e91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638577584167:android:7b5b223dd8f03419",
+        "android_client_info": {
+          "package_name": "br.com.recuperacao.projetotcc1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638577584167-29nugishaoo84ni5peho6ckdsv34qs4d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.recuperacao.projetotcc1",
+            "certificate_hash": "78e23c9aeb3f9564c4d4d72ebcc6e5369a233ae7"
+          }
+        },
+        {
+          "client_id": "638577584167-8lgj7600faaoomko24lljtpspru5uj7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJXz8_FP-whuPmthmNGdlvqNaZWgXTD8Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638577584167-8lgj7600faaoomko24lljtpspru5uj7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
