@@ -7,13 +7,27 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@drawable/gradiente"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.recuperacao.projetotcc1.CadastroActivity">
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="Cadastro"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/nome_cad"
@@ -32,12 +46,13 @@
             android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/dt_nasc_cad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/dt_nasc_cad"
             android:hint="Data de Nascimento"
             android:inputType="date" />
+
 
         <EditText
             android:id="@+id/email_cad"
