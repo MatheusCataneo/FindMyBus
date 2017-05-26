@@ -2,6 +2,7 @@ package br.com.recuperacao.projetotcc1;
 
 import android.content.Intent;
 
+import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,12 +23,19 @@ public class MainInicial extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
-        String provider = Settings.Secure.getString(getContentResolver(),
-                Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-//Se vier null ou length == 0   é por que o GPS esta desabilitado.
-//Para abrir a tela do menu pode fazer assim:
-        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-        startActivityForResult(intent, 1);
+
+        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+// Verifica se o GPS está ativo
+        boolean enabled = service.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+// Caso não esteja ativo abre um novo diálogo com as configurações para
+// realizar se ativamento
+        if (!enabled) {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivity(intent);
+        }
+
 
     }
 
