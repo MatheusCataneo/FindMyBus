@@ -23,7 +23,8 @@ import java.util.List;
 
 public class DirectionFinder {
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
-    private static final String GOOGLE_API_KEY = "AIzaSyDZSZHGb3s416al1Vg_kFFu7yfgo8eT_5Y";
+    //private static final String GOOGLE_API_KEY = "AIzaSyDnwLF2-WfK8cVZt9OoDYJ9Y8kspXhEHfI";
+    private static final String GOOGLE_API_KEY = "AIzaSyC0gbZMZ14HprvSIhqcKzGpoTf7eNwtirg";
     private DirectionFinderListener listener;
     private String origin;
     private String destination;
@@ -111,12 +112,13 @@ public class DirectionFinder {
             route.endLocation = new LatLng(jsonEndLocation.getDouble("lat"), jsonEndLocation.getDouble("lng"));
             route.points = decodePolyLine(overview_polylineJson.getString("points"));
 
-           /* JSONArray jsonSteps = jsonLeg.getJSONArray("steps");
+            JSONArray jsonSteps = jsonLeg.getJSONArray("steps");
+            route.steps = new ArrayList<>();
             for (int j = 0; j < jsonSteps.length(); j++) {
                 JSONObject jsonStep = jsonSteps.getJSONObject(j);
                 JSONObject jsonStepStartLocation = jsonStep.getJSONObject("start_location");
                 route.steps.add(new LatLng(jsonStepStartLocation.getDouble("lat"), jsonStepStartLocation.getDouble("lng")));
-            }*/
+            }
 
             routes.add(route);
         }

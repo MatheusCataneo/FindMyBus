@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -42,6 +43,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
+
+    private Route routeAux;
+    private Marker marker;
+
+    Handler timerHandler = new Handler();
+    Runnable timerRunnable = new Runnable() {
+
+        int index = 0;
+
+        @Override
+        public void run() {
+
+            if (index < routeAux.points.size()) {
+
+                if (marker != null) {
+                    marker.remove();
+                }
+                LatLng latLng = new LatLng(routeAux.points.get(index).latitude, routeAux.points.get(index).longitude);
+                marker = mMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_send_grey600_48dp))
+                        .title("Onibus")
+                        .position(latLng));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                index++;
+                timerHandler.postDelayed(this, 500);
+            } else {
+                marker.remove();
+                marker = mMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_send_grey600_48dp))
+                        .title("Onibus")
+                        .position(routeAux.endLocation));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(routeAux.endLocation));
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +175,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         destinationMarkers = new ArrayList<>();
 
         for (Route route : routes) {
+            routeAux = route;
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(route.startLocation, 16));
             ((TextView) findViewById(R.id.tvDuration)).setText(route.duration.text);
             ((TextView) findViewById(R.id.tvDistance)).setText(route.distance.text);
@@ -161,6 +198,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 polylineOptions.add(route.points.get(i));
 
             polylinePaths.add(mMap.addPolyline(polylineOptions));
+
+            timerHandler.post(timerRunnable);
         }
     }
 }
