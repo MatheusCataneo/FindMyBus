@@ -12,6 +12,10 @@
     tools:context="br.com.recuperacao.projetotcc1.CadastroActivity">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -87,6 +91,7 @@
             android:inputType="textPassword" />
 
     </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -112,5 +117,6 @@
             android:layout_weight="1"
             android:onClick="Salvar" />
     </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+

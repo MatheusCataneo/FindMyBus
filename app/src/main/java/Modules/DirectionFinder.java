@@ -1,5 +1,6 @@
 package Modules;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -20,13 +21,16 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class DirectionFinder {
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
-    //private static final String GOOGLE_API_KEY = "AIzaSyDnwLF2-WfK8cVZt9OoDYJ9Y8kspXhEHfI";
+    private static final String GOOGLE_API_KEY2 = "AIzaSyDnwLF2-WfK8cVZt9OoDYJ9Y8kspXhEHfI";
     private static final String GOOGLE_API_KEY = "AIzaSyC0gbZMZ14HprvSIhqcKzGpoTf7eNwtirg";
     private DirectionFinderListener listener;
     private String origin;
     private String destination;
+    private int tentativas = 0;
 
     public DirectionFinder(DirectionFinderListener listener, String origin, String destination) {
         this.listener = listener;
@@ -35,6 +39,11 @@ public class DirectionFinder {
     }
 
     public void execute() throws UnsupportedEncodingException {
+        if (tentativas >= 2) {
+            ProgressDialog.show(getApplicationContext(), "ERRO",
+                "API KEY com defeito, contate o suporte!", true);
+            return;
+        }
         listener.onDirectionFinderStart();
         new DownloadRawData().execute(createUrl());
     }
@@ -43,8 +52,13 @@ public class DirectionFinder {
         String urlOrigin = URLEncoder.encode(origin, "utf-8");
         String urlDestination = URLEncoder.encode(destination, "utf-8");
 
-        return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY;
+        String url = DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=";
 
+        if (tentativas == 0) {
+            return url + GOOGLE_API_KEY;
+        }
+
+        return url + GOOGLE_API_KEY2;
 
     }
 
@@ -92,6 +106,16 @@ public class DirectionFinder {
         List<Route> routes = new ArrayList<Route>();
         JSONObject jsonData = new JSONObject(data);
         JSONArray jsonRoutes = jsonData.getJSONArray("routes");
+
+        if (jsonRoutes.length() == 0) {
+            try {
+                this.execute();
+                return;
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+
         for (int i = 0; i < jsonRoutes.length(); i++) {
             JSONObject jsonRoute = jsonRoutes.getJSONObject(i);
             Route route = new Route();
@@ -116,8 +140,12 @@ public class DirectionFinder {
             route.steps = new ArrayList<>();
             for (int j = 0; j < jsonSteps.length(); j++) {
                 JSONObject jsonStep = jsonSteps.getJSONObject(j);
+
+
                 JSONObject jsonStepStartLocation = jsonStep.getJSONObject("start_location");
                 route.steps.add(new LatLng(jsonStepStartLocation.getDouble("lat"), jsonStepStartLocation.getDouble("lng")));
+
+
             }
 
             routes.add(route);

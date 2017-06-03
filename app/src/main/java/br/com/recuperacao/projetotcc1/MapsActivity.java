@@ -33,12 +33,16 @@ import Modules.DirectionFinder;
 import Modules.DirectionFinderListener;
 import Modules.Route;
 
+import static android.widget.Toast.*;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, DirectionFinderListener {
 
     private GoogleMap mMap;
     private Button btnFindPath;
     private EditText etOrigin;
     private EditText etDestination;
+    private TextView tvDistance;
+    private TextView tvDuration;
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
@@ -47,15 +51,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Route routeAux;
     private Marker marker;
 
+
+
+
     Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
 
         int index = 0;
+        int indexTempo = 0;
+        private Integer tempo = 44;
+
+        int indexKm = 0;
+        private Integer Km = 27;
 
         @Override
         public void run() {
 
-            if (index < routeAux.points.size()) {
+            if (index < routeAux.points.size()) { //Toast.makeText(getApplicationContext(), routeAux.points.size() + " ", Toast.LENGTH_LONG).show();
 
                 if (marker != null) {
                     marker.remove();
@@ -67,6 +79,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .position(latLng));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 index++;
+
+                indexTempo++;
+                if (indexTempo == 7) {
+                    indexTempo = 0;
+                    tempo --;
+                    tvDistance.setText(tempo + " min");
+                }
+              /*indexKm++;
+                if (indexKm == 12){
+                    indexKm = 0;
+                    Km --;
+                    tvDuration.setText(Km + " km");
+                }*/
+
                 timerHandler.postDelayed(this, 500);
             } else {
                 marker.remove();
@@ -75,6 +101,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .title("Onibus")
                         .position(routeAux.endLocation));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(routeAux.endLocation));
+                tvDistance.setText("0 min");
+                //tvDuration.setText("0 km");
+
+                Toast.makeText(getApplicationContext(), "O Onibus Chegou ao Destino", Toast.LENGTH_LONG).show();
+
+
             }
         }
     };
@@ -83,6 +115,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        tvDistance = (TextView) findViewById(R.id.tvDuration);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -104,11 +139,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String origin = etOrigin.getText().toString();
         String destination = etDestination.getText().toString();
         if (origin.isEmpty()) {
-            Toast.makeText(this, "Digite o local da saida!", Toast.LENGTH_SHORT).show();
+            makeText(this, "Digite o local da saida!", LENGTH_SHORT).show();
             return;
         }
         if (destination.isEmpty()) {
-            Toast.makeText(this, "Digite o local de Chegada!", Toast.LENGTH_SHORT).show();
+            makeText(this, "Digite o local de Chegada!", LENGTH_SHORT).show();
             return;
         }
 

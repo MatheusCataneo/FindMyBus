@@ -11,6 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.recuperacao.projetotcc1.EntrarActivity">
 
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -71,4 +73,5 @@
             android:id="@+id/senhaLog"
             android:hint="*********" />
     </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
+
